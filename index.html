@@ -1,0 +1,254 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="" href="../picture/@Wallpaper_4K3D (11532).jpg">
+        <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            transition: all .4s;
+        }
+        body{
+            background-color: rgb(68, 68, 68);
+            overflow-x:hidden;
+        }
+        .container{
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .again{
+            padding: 10px 40px;
+            margin: 10px;
+            font-size: 19px;
+        }
+        header{
+            display: flex;
+            justify-content: space-between;
+        }
+        .s-header{
+            font-size: 17px;
+            color: whitesmoke;
+            padding: 20px;
+        }
+        .h1-main{
+            color: white;
+            text-align: center;
+        }
+        .box-container{
+            display: flex;
+            justify-content: center;
+            align-items: center!important;
+            /* background-color: red; */
+        }
+        .box{
+            font-size: 55px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            display: inline-block;
+            padding:10px 30px;
+            margin: 30px 0;
+            background-color:rgb(206, 206, 206);
+            color: rgb(66, 66, 66);
+            position: relative;
+        }
+        .box::after{
+            content: "";
+            width: 500cm;
+            height: 2px;
+            position: absolute;
+            background-color: rgb(255, 255, 255);
+            top: 50%;
+            left: 90;
+        }
+        .box::before{
+            content: "";
+            width: 1000%;
+            height: 2px;
+            position: absolute;
+            background-color: rgb(255, 255, 255);
+            top: 50%; 
+            right: 90;
+        }
+        .main-cont{
+            display: flex;
+            justify-content: space-around;
+        }
+        .main-right{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+        .guess{
+            width: 230px;
+            height: 100px;
+            background-color: rgb(68, 68, 68);
+            border: 3px solid white;
+            outline: none;
+            color: white;
+            font-size: 90px;
+            text-align: center;
+        }
+        .guess:focus{
+            outline: none;
+        }
+        .btn-check{
+            padding: 10 15px;
+            font-weight: 600;
+            background-color:aliceblue;
+            cursor: pointer;
+        }
+        .main-left{
+            display: flex;
+            align-items: start;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .p-main-left{
+            color: white;
+            font-weight: 600;
+            font-size: 25px;
+        }
+        .spans-main-left{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            position:relative;
+            margin:50% 0;
+        }
+        .span-main-left{
+            color: white;
+            font-size: larger;
+            font-weight: 500;
+        }
+        .span2-main-left{
+            color: white;
+            font-size: larger;
+            font-weight: 600;
+            padding: 20px 0;
+        }
+        @media screen and (max-width:640px) {
+            .main-cont{
+                flex-direction: column;
+            }
+            .main-left{
+                margin: 0;
+            }
+            .spans-main-left{
+                margin: 20px;
+            }
+            .p-main-left{
+                margin: 0 auto;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <!-- Coded by SpGang -->
+        <div class="container">
+            <header>
+                <button onclick="Again()" class="again">Again</button>
+                <span class="s-header">Between 1 and 20</span>
+            </header>
+            <main>
+                <h1 class="h1-main">Guess My number!</h1>
+                <div class="box-container">
+                    <div class="box">?</div>
+                </div>
+                <div class="main-cont">
+                    <div class="main-right">
+                        <input class="guess" type="number"><br>
+                        <div class="btn-check">check!</div>
+                    </div>
+                    <div class="main-left">
+                        <p class="p-main-left">Start guessing...</p>
+                        <div class="spans-main-left">
+                            <span class="span-main-left">
+                                🎟️ Score:
+                            </span>
+                            <span class="span2-main-left">
+                                🎖️ Highscore:
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+    <!-- <script src="script.js">
+</script> -->
+<script>
+    "use strict";
+// window.addEventListener("beforeunload",function(event){
+//   event.returnValue = "";
+// });
+var input = document.querySelector(".guess");
+var check = document.querySelector(".p-main-left");
+var scroe = document.querySelector(".span-main-left");
+var highscore = document.querySelector(".span2-main-left");
+// document.addEventListener("keypress", (event)=>{
+//     console.log(event);
+//     if(event.key == 'Enter'){
+//     }
+// })
+console.log(typeof 0);
+var scorei = 20;
+scroe.innerHTML = `🎟️ Score: ${scorei}`;
+var random = Math.trunc(Math.random() * 20);
+console.log(random);
+document.querySelector(".btn-check").addEventListener("click", () => {
+  var hightscore = document.querySelector(".span2-main-left");
+  if(!input.value){
+    check.textContent = "🔢 NO NUMBER "
+  }
+  if (input.value > random) {
+    check.innerHTML = "📈 big number";
+    scorei--;
+    scroe.innerHTML = `🎟️ Score: ${scorei}`;
+  } else if (input.value < random && input.value) {
+    check.innerHTML = "📉 small number";
+    scorei--;
+    scroe.innerHTML = `🎟️ Score: ${scorei}`;
+  } else if (input.value == random) {
+    console.log(random);
+    if (input.value >= sum) {
+      highscore.innerHTML = document.querySelector(".guess").value;
+    }
+    document.querySelector(".box").innerHTML = random;
+    document.querySelector("body").style.backgroundColor = "green";
+    check.innerHTML = "🎁 congratulation!";
+    scorei = scorei + 10;
+    var sum = scorei;
+    scroe.innerHTML = `🎟️ Score: ${sum} `;
+  }
+});
+let sec = 0;
+let min = 0;
+let hr = 0;
+var couont;
+// function start(){
+//     couont = setInterval(() => {
+//     sec += 1;
+//     if (sec >= 60) {
+//       min += 1;
+//       sec = 0;
+//     }
+//     if(min>= 60){
+//       hr += 1;
+//       min = 0;
+//     }
+//     var timer = document.querySelector(".span-main-left");
+//     timer.innerHTML = `the time is ${sec} secound and ${min} minutes and ${hr} hours`
+//   }, 1000);;
+// };
+// test();
+function stop(){
+  clearInterval(couont)
+};
+
+</script>
+</html>
